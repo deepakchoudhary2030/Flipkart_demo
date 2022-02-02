@@ -1,0 +1,23 @@
+ <div class="jumbotron-fluid jumb1">
+  <h1>Sub Category</h1>
+  <div class="container-fluid jumb1">
+    <div class="container flex-item3 ">
+      <% @subcategory.each do |subcategory| %>
+        <div class="gy-4 mt-2 my-5">
+          <div class="icon-box">
+            <a class="link1" href="/user/products/<%=subcategory.id%>">
+              <% if subcategory.cover_url %>
+                 <%=image_tag(subcategory.cover_url,height: 100,width: 100)%>
+               <% else %>
+                 <%=image_tag "demo.png", height: 100,width: 100 %>
+               <% end %>
+                  <p>
+                     <%=subcategory.name %>
+                  </p>
+            </a>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+<div class="container">
+<div class="btn-group">
+<% @categories.each do |category| %>
+     <% if category.category_id==nil %>
+
+  <a class="btn btn-sm dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+
+  <% if category.cover_url %>
+    <%=image_tag(category.cover_url,height: 100,width: 100)%><br>
+  <%else %>
+        <%=image_tag "demo.png", height: 100,width: 100 %><br>
+  <% end %>
+    <%= category.name%>
+  </a>
+  <ul class="dropdown-menu">
+    <% @subcategory.each do |sub1|%>
+        <%if sub1.category_id == category.id%>
+    <li><a class="dropdown-item" href="/user/products/<%=sub1.id%>"><%= sub1.name%></a></li>
+            
+        <%end%>
+        <%end%>
+  </ul>
+  <%end%>
+<% end %>
+</div>
+</div>
+
+<div class="container-fluid mb-5 bg-light">
+    <div class="container d-flex align-content-between flex-wrap  mt-5 bg-white">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <%=image_tag "slider.jpg", height: 200,class: "d-block "%>
+                </div>
+                <div class="carousel-item">
+                    <%=image_tag "slider1.jpg", height: 200,class: "d-block "%>
+                </div>
+                <div class="carousel-item">
+                    <%=image_tag "slider2.jpg", height: 200,class: "d-block "%>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <div class="jumbotron-fluid jumb1">
+        <h1>Category</h1>
+
+        <div class="container-fluid jumb1">
+            <div class="container flex-item3 ">
+                <% @categories.each do |category| %>
+                    <% if category.category_id==nil %>
+                        <div class="gy-4 mt-2 my-5">
+                            <div class="icon-box">
+                                <a class="link1" href="/user/subcategory/<%=category.id%>">
+                                    <% if category.cover_url %>
+                                        <%=image_tag(category.cover_url,height: 100,width: 100)%>
+                                    <%else %>
+                                          <%=image_tag "demo.png", height: 100,width: 100 %>
+                                    <% end %>
+                                          <p>
+                                             <%=category.name %>
+                                          </p>
+                                </a>
+                            </div>
+                        </div>
+                        <%end%>
+                <% end %>
+            </div>
+        </div>
+
+         <div class="container-fluid mt-5 mb-5 ">
+            <div class="card-group">
+                <div class="card m-3">
+                    <%=image_tag "slider3.jpg", height: 200,class: "d-block "%>
+                </div>
+
+                <div class="card m-3">
+                    <%=image_tag "slider4.jpg", height: 200,class: "d-block "%>
+                </div>
+
+                <div class="card m-3">
+                    <%=image_tag "slider5.jpg", height: 200,class: "d-block "%>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid mb-5 p-2 border border-1 border-dark">
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active d-flex justify-content-around">
+                        <%@product1.each do |product|%>
+                            <div class="" style="width: 18rem;">
+                                    <% if product.cover_url %>
+                                <%=image_tag(product.cover.url,class: "card-img-top" , height: 150, width: 150)%>
+                                        
+                                    <%else %>
+                                          <%=image_tag "demo.png", height: 100,width: 100 %>
+                                    <% end %>
+
+
+
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><%=product.name%></h5>
+                                         
+                                        <p class="card-text">
+                                            <%=number_to_currency(product.price)%></p>
+                                        <%=button_to "cart", listitems_path(product_id: product.id),:class=>"btn btn-primary" %>
+                                    </div>
+                            </div>
+                            <% end %>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <%=image_tag "slider6.jpg", height: 200,class: "d-block "%>
+        </div>
+     
+
+    </div>

@@ -1,0 +1,18 @@
+<div class="jumbotron-fluid jumb1">
+    <h1>Products</h1>
+      <div class="container-fluid jumb1">
+        <div class="container flex-item3 ">
+               <% @product.each do |product| %>
+               <div class="card" style="width: 20rem;">
+                  <%= image_tag(product.cover.url,class:"card-img-top" , height: 150, width: 150) if product.cover%>
+                      <div class="card-body">
+                        <h5 class="card-title">Name : <%= product.name %></h5>
+                        <h5 class="card-title">Price : <%= number_to_currency(product.price) %></h5>
+                        <p class="card-text">Detail :<%= product.detail%></p>
+                        <%= button_to "cart", listitems_path(product_id: product.id),:class=>"btn btn-primary" %>
+                      </div>
+                </div>
+                <% end  %>
+        </div>
+   </div>
+</div>

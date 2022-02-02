@@ -1,0 +1,10 @@
+<h1>Place Order</h1>
+<%= form_with(url:"/order",model:@order) do |f| %>
+  <p>
+    <%= f.label :status %><br>
+    <%= f.text_area :status %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

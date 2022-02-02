@@ -1,0 +1,10 @@
+// {
+//     "editor.defaultFormatter": "misogi.ruby-rubocop"
+// },
+{
+  "ruby.rubocop.configFilePath": "/path/to/config/.rubocop.yml",
+  
+    // default true
+    "ruby.rubocop.onSave": true,
+    "ruby.rubocop.executePath": "/home/cis/Desktop/Projects/Flipkart_demo/.rubocop.yml"
+  }

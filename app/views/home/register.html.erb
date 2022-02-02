@@ -1,0 +1,64 @@
+<section class="vh-100 bg-primary" >
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                <%= form_with model: @user do |form| %>
+                <div class="form-outline mb-4">
+                     <%=  form.text_field :title,{placeholder:"First Name"  ,class:"form-control form-control-lg"} %>
+                </div>
+                <div class="form-outline mb-4">
+                    <%=  form.text_field :title ,{placeholder:"First Name"  ,class:"form-control form-control-lg"} %>
+                </div>
+                <div class="form-outline mb-4">
+                    <%=  form.text_field :title ,{placeholder:"Last Name"  ,class:"form-control form-control-lg"} %>
+                </div>
+                <div class="form-outline mb-4">
+                  <%=  form.text_field :title ,{placeholder:"User Name"  ,class:"form-control form-control-lg"} %>
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <%= form.email_field :title,{placeholder:"Email" ,class:"form-control form-control-lg"} %>
+                </div>
+                <%# 
+                <div class="form-outline mb-4">
+                  <%= form.number_field :title,{placeholder:"Phone" ,class:"form-control form-control-lg"} %>
+                <%#</div>
+                 %>
+                <div class="form-outline mb-4">
+                  <%= form.number_field :title,{placeholder:"Pincode" ,class:"form-control form-control-lg"} %>
+                </div>
+                
+                <select class="form-select  form-select-lg mb-4" aria-label="Default select example">
+                        <option selected>Select User Type</option>
+                        <option value="1">User</option>
+                        <option value="2">Supplier</option>
+                </select>
+                <div class="form-outline mb-4">
+                  <%=  form.password_field :title ,{placeholder:"Password"  ,class:"form-control form-control-lg"} %>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <%=  form.password_field :title ,{placeholder:"Confirm Password"  ,class:"form-control form-control-lg"} %>
+                </div>
+
+
+                <div class="d-flex justify-content-center">
+                  <%= form.submit "Register", {class:"btn btn-success"}%>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login" class="fw-bold text-body"><u>Login here</u></a></p>
+                <% end %>
+            
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

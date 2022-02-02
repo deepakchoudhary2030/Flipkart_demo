@@ -1,0 +1,38 @@
+<%if @cart==nil%>
+<div class="container">
+                  <%=image_tag "missingcart.png" %>
+                  <h1>Missing Cart items? <a href="/">click here</a></h1>
+                </div>
+                <%else%>
+<div class="container">
+
+               <p>Sub total: <%= number_to_currency(@cart.sub_total) %></p>
+                <%= link_to "Place Order", new_order_path %><br>
+                <%= link_to "Empty cart", cart_destroy_path(@cart.id),method: :delete, data: {confirm: "Are you sure?"}%>
+</div>
+<div class="jumbotron-fluid jumb1">
+    <h1>Cart</h1>
+      <div class="container-fluid jumb1">
+        <div class="container flex-item3 ">
+               <%= @cart.id%>
+               <% @cart.list_items.each do |list_items| %>
+               <div class="card" style="width: 18rem;">
+                  <%= image_tag(list_items.product.cover.url,class:"card-img-top" , height: 150, width: 150) if list_items.product.cover%>
+                      <div class="card-body">
+                        <h5 class="card-title">Name : <%= list_items.product.id %></h5>
+                        <h5 class="card-title">Price : <%= list_items.product.price %>/-</h5>
+                        <p class="card-text">Quantity :<%= list_items.quantity%></p>
+                        <p class="card-text">Total :<%= number_to_currency(list_items.total_price)%></p>
+                        <%= link_to "Inc", listitem_inc_path(id: list_items.id), method: :post %>
+                        <%= link_to "Dec", listitem_dec_path(id:list_items.id), method: :post %>
+                        <%= link_to "Remove",listitem_rem_path(id:list_items.id),method: :delete%>
+
+                      </div>
+                </div>
+                <% end  %>
+        </div>
+
+   </div>
+</div>
+ <%end%>
+

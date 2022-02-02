@@ -1,0 +1,31 @@
+<div class="jumbotron-fluid jumb1">
+    <% if @products == []%>
+       <h1>No Order History</h1>
+    <%else%>
+    <h1>Orders</h1>
+      <div class="container-fluid jumb1">
+        <div class="container flex-item3 ">
+            <% @products.each do |product| %>
+                  <div class="card mb-3" style="max-width: 540px;">
+                      <div class="row g-0">
+                          <div class="col-md-4">
+                             <% if product.cover_url %>
+                                   <%= image_tag(product.cover_url,height: 100,width: 100)%>
+                              <%else %>
+                                    <%= image_tag "slider.jpg", height: 100,width: 100 %>
+                              <% end %>                                </div>
+                                <div class="col-md-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Name : <%= product.name %></h5>
+                                    <h5 class="card-title">Price : <%= product.price %>/-</h5>
+                                    <p class="card-text">Detail :<%= product.detail%></p>
+                                    <p class="card-text"><small class="text-muted"><%= product.created_at%></small></p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+            <% end %>
+    <% end %>
+        </div>
+   </div>
+</div>

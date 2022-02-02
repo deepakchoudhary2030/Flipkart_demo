@@ -1,0 +1,58 @@
+<div class="jumbotron-fluid jumb1">
+         <h1>Category</h1>
+         <div class="container-fluid jumb1">
+            <div class="container flex-item3 ">
+                     <% @category.each do |category| %>
+                     <% if category.category_id == nil %>
+                        <div class="gy-4 mt-2 my-5">
+                           <div class="icon-box">
+                              <a class="link1" href="/supplier/category/<%=category.id%>">
+                              
+                               <% if category.cover_url %>
+                                    <%= image_tag(category.cover_url,height: 100,width: 100)%>
+                              <%else %>
+                                    <%= image_tag "demo.png", height: 100,width: 100 %>
+                              <% end %>
+                              <p><%= category.name %></p>    
+                              </a>
+                           </div>
+                        </div>
+                        <%end%>
+                     <% end  %>
+            </div>
+            <h1>Products</h1>
+         <div class="container-fluid jumb1">
+            <div class="container flex-item3 ">
+                 <table class="table">
+                  <thead>
+                     <tr>
+                        <th scope="col">s.no</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Detail</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  
+
+                     <% @product.each do |product| %>
+                     
+                     <tr>
+                        <th scope="row"><%=product.id%></th>
+                        <td><%=product.name%></td>
+                        <td><%=product.detail%></td>
+                        <td><%=number_to_currency(product.price)%></td>
+                        <td><%= link_to 'Edit', edit_supplier_product_path(product.id)  %></td>
+                        <td><%= link_to 'Delete', supplier_product_path(product.id), :method => :delete, :confirm => 'Are you sure?' %></td>
+                                                         
+                     </tr>
+                     <% end  %>
+                  </tbody>
+                  </table>
+            </div>
+         </div>
+
+</div>
+

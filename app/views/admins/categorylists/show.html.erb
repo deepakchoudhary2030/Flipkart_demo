@@ -1,0 +1,23 @@
+<div class="container">
+<%= link_to 'create subcategory', new_admins_subcategory_path, class: 'btn btn-dark' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">s.no</th>
+      <th scope="col">Category</th>
+      <th scope="col">Add</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @subcategories.each do |subcategory| %>
+    <tr>
+      <th scope="row"><%= subcategory.id %></th>
+      <td><%=  subcategory.name %></td>
+      <td><%= link_to 'Edit', edit_admins_subcategory_path(subcategory.id),class:"btn btn-primary"%></td>
+     <td><%= link_to 'Delete', admins_subcategory_path(subcategory.id),class:"btn btn-danger" ,:method => :delete, :confirm => 'Are you sure?' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

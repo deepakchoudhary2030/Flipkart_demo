@@ -1,0 +1,58 @@
+<section class="vh-100" style="background-color: #f4f5f7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 bg-primary text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">            
+                <% if @user.cover_url %>
+                    <%= image_tag(@user.cover_url,width: 80,class:"img-fluid my-5")%>
+                <%else %>
+                    <%=image_tag "xyz.png", width: 80,class:"img-fluid my-5" %><br>
+                <% end %>
+              <h5><%=@user.user_name%></h5>
+              <p><%=@user.first_name%> <%=@user.last_name%></p>
+                  <i class="bi bi-facebook "></i>
+                  <i class="bi bi-twitter m-4"></i>
+                  <i class="bi bi-instagram"></i>
+                  <h5><%= link_to "Edit Profile" ,edit_user_registration_path(),class:"text-white"%></h5>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h3>Information</h3>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h5>Email</h5>
+                    <p class="text-muted"><%=@user.email%></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h5>Phone</h5>
+                    <p class="text-muted"><%=@user.phone%></p>
+                  </div>
+                </div>
+                <h3>Contact</h3>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h5>Address</h5>
+                    <p class="text-muted"><%=@user.address%></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h5>City</h5>
+                    <p class="text-muted"><%=@user.city%></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h5>Pincode</h5>
+                    <p class="text-muted"><%=@user.pincode%></p>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

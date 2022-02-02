@@ -1,0 +1,39 @@
+.jumb1{
+  margin-bottom: 2em;
+}
+.jumb1 .link1
+{
+  text-decoration: none;
+  color: grey;
+}
+.jumb1 .link1:hover
+{
+  color: black;
+}
+.jumb1 h1
+{ text-align: center; 
+	margin-top: 5em;
+margin-bottom:2em;
+}
+
+.flex-item3
+{
+	display: -ms-flexb ox;
+	display: flex;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+.flex-item3 .icon-box {
+  padding: 20px 1px;
+  -webkit-transition: ease-in-out 0.3s;
+  -o-transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.3s;
+  width: 15em;
+  height: 10em;
+  background-color: transparent;
+  text-align: center;
+}
+
+
