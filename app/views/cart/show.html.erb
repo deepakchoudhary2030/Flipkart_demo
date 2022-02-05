@@ -1,38 +1,98 @@
 <%if @cart==nil%>
-<div class="container">
-                  <%=image_tag "missingcart.png" %>
-                  <h1>Missing Cart items? <a href="/">click here</a></h1>
-                </div>
-                <%else%>
-<div class="container">
+ <div class="container">
+      <%=image_tag "missingcart.png" %>
+          <h1>Missing Cart items? <a href="/">click here</a></h1>
+ </div>
+<%else%>
 
-               <p>Sub total: <%= number_to_currency(@cart.sub_total) %></p>
-                <%= link_to "Place Order", new_order_path %><br>
-                <%= link_to "Empty cart", cart_destroy_path(@cart.id),method: :delete, data: {confirm: "Are you sure?"}%>
-</div>
-<div class="jumbotron-fluid jumb1">
-    <h1>Cart</h1>
-      <div class="container-fluid jumb1">
-        <div class="container flex-item3 ">
-               <%= @cart.id%>
-               <% @cart.list_items.each do |list_items| %>
-               <div class="card" style="width: 18rem;">
-                  <%= image_tag(list_items.product.cover.url,class:"card-img-top" , height: 150, width: 150) if list_items.product.cover%>
-                      <div class="card-body">
-                        <h5 class="card-title">Name : <%= list_items.product.id %></h5>
-                        <h5 class="card-title">Price : <%= list_items.product.price %>/-</h5>
-                        <p class="card-text">Quantity :<%= list_items.quantity%></p>
-                        <p class="card-text">Total :<%= number_to_currency(list_items.total_price)%></p>
-                        <%= link_to "Inc", listitem_inc_path(id: list_items.id), method: :post %>
+<section class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h6 class="mb-0 text-muted"><%=@cart.list_items.count%> items</h6>
+                  </div>
+                  <% @cart.list_items.each do |list_items| %>
+
+                  <hr class="my-4">
+
+                  <div class="row mb-4 d-flex justify-content-between align-items-center">
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <%= image_tag(list_items.product.cover.url,class:"img-fluid rounded-3" , height: 150, width: 150) if list_items.product.cover%>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-muted"><%= list_items.product.name %></</h6>
+                      <%# <h6 class="text-black mb-0">Cotton T-shirt</h6> %>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                      <button class="btn btn-link px-2">
+                            <%= link_to "Inc", listitem_inc_path(id: list_items.id), method: :post %>
+
+                      </button>
+
+                      <input id="form1" min="0" name="quantity" value="<%= list_items.quantity%>" type="number"
+                        class="form-control form-control-sm" />
+
+                      <button class="btn btn-link px-2">
                         <%= link_to "Dec", listitem_dec_path(id:list_items.id), method: :post %>
-                        <%= link_to "Remove",listitem_rem_path(id:list_items.id),method: :delete%>
-
-                      </div>
-                </div>
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0"><%= list_items.product.price %></h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                        <%= link_to "Del",listitem_rem_path(id:list_items.id),method: :delete%>
+                      
+                    </div>
+                  </div>          
                 <% end  %>
+
+                  <hr class="my-4">
+                  <div class="pt-5">
+                    <h6 class="mb-0"><a href="/" class="text-body"><i class="bi bi-arrow-left-circle"></i> Back to shop</a></h6>
+                          <h6 class="mb-0"> <%= link_to "Empty cart", cart_destroy_path(@cart.id),method: :delete, data: {confirm: "Are you sure?"}%></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4">
+                    <%j=1%>
+                    <%k=0%>
+                    <%@cart.list_items.each do |i|%>
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase">items <%=j%></h5>
+                    <h5><%= number_to_currency(@cart.sub_total1[k]) %><h5>
+                  </div>
+                  <%j+=1%>
+                  <%k+=1%>
+                    <%end%>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-5">
+                    <h5 class="text-uppercase">Total price</h5>
+                    <h5><%= number_to_currency(@cart.sub_total) %></h5>
+                  </div>
+
+                  <button type="button" class="btn btn-dark btn-block btn-lg text-white"
+                    data-mdb-ripple-color="dark"><%= link_to "Place Order", new_order_path %></button>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-   </div>
-</div>
+      </div>
+    </div>
+  </div>
+</section>
  <%end%>
-

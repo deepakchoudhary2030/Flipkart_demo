@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-
+ 
   devise_for :users
   
     root "home#index"
@@ -16,7 +15,9 @@ Rails.application.routes.draw do
   end
  
   namespace :admins do
+    get 'order/index'
     resources :users
+    resources :order
     resources :categorylists
     resources :subcategories
   end

@@ -40,8 +40,8 @@ class HomeController < ApplicationController
 
   def cart
     @CartItems = find_user(params[:id]).carts
-    @CartItems.each do |cartItem|
-        @listitem = find_cart(cartItem.id).list_items
+    @CartItems.each do |cartItem|  
+      @listitem = find_cart(cartItem.id).list_items
     end
   end
 

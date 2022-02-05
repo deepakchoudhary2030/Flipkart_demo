@@ -25,26 +25,42 @@
                 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">Flipkart</a>
+                             <a class="nav-item text-white" aria-current="page" href="/">Home</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                             </button>
-                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                              <div class="navbar-nav">
+                            <div class=" navbar-collapse justify-content-end " id="navbarNavAltMarkup">
+                              <div class="navbar-nav " style="margin-right:6em;">
                               <% if user_signed_in? %>
 
                                     <% if current_user.user_type =="admin" %>
-                                      <a class="nav-link active" href="#">Hello Admin!</a>    
-                                      <a class="nav-link active" aria-current="page" href="/">Home</a>
+                          
+                                      <a class="nav-link active" href="#">Hello Admin!</a>  
+                                      <a class="nav-link active" href="/admins/order">Order</a>
                                       <a class="nav-link active" href="/users/sign_out"  data-method="delete">Sign out <i class="bi bi-box-arrow-in-left"></i></a>
+                                   
                                     <% elsif current_user.user_type =="supplier" %>
-                                      <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                   
                                       <a class="nav-link active" href="/users/sign_out"  data-method="delete">Sign out <i class="bi bi-box-arrow-left"></i></a>
+                                   
                                     <% else %>
-                                      <a class="nav-link active" aria-current="page" href="/">Home</a>
-                                      <a class="nav-link active" href="/profile">profile <i class="bi bi-person"></i></a>
-                                      <a class="nav-link active" href="/carts">Cart <i class="bi bi-cart3"></i></a>
-                                      <a class="nav-link active" href="/order">Order</a>
-                                      <a class="nav-link active" href="/users/sign_out"  data-method="delete">Sign out <i class="bi bi-box-arrow-in-left"></i></a>
+                                   
+                                    <li class="nav-item m-2">
+                                      <a class="nav-link active" href="/carts"><i class="bi bi-cart-fill"></i> Cart<span class="badge bg-danger"><%if current_user.cart==nil%><%=current_user.cart%><%else%><%=current_user.cart.list_items.count%><%end%></span></a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                             <img src="<%=current_user.cover_url%>" class="rounded-circle" alt="" height="30px">
+                                          </a>
+                                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+                                            <li><a class="dropdown-item" href="/profile">profile</a></li>
+                                            <li><a class="dropdown-item" href="/order">Order</a></li>
+                                            <li><a class="dropdown-item" href="/users/sign_out"  data-method="delete">Sign out <i class="bi bi-box-arrow-in-left"></i></a></li>
+                                          </ul>
+                                        </li>
+
+
                                     <% end %>
 
                               <% else %> 
